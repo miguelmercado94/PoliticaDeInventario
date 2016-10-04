@@ -175,7 +175,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             minorista.setDia(dia);
             minorista.setConexion(new ConexionMayorista(ip,puerto));
             ConfigMinoristaHumano vista3 = new ConfigMinoristaHumano((MinoristaHumano)minorista);
-            this.enable(false);
+            this.setEnabled(false);
             this.setVisible(false);
             }else{
             id = servidor.conectarse("S");
