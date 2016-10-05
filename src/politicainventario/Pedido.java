@@ -11,10 +11,11 @@ package politicainventario;
  */
 public class Pedido {
 
-private   int costo;
+private   double costo;
 private int cuantordenar ;
 private int diadeespera ;
 private boolean estado ;
+
 
 
     public Pedido() {
@@ -25,7 +26,7 @@ private boolean estado ;
      
     }
 
-    public Pedido(int costo, int cuantordenar, int diadeespera, boolean estado) {
+    public Pedido(double costo, int cuantordenar, int diadeespera, boolean estado) {
         this.costo = costo;
         this.cuantordenar = cuantordenar;
         this.diadeespera = diadeespera;
@@ -38,15 +39,14 @@ private boolean estado ;
          this.estado= estado;
     }
 
-    public void setCosto(int costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
 
     public boolean getEstado() {
         return estado;
     }
-
-    public  int getCosto() {
+    public double getCosto() {
         return costo;
     }
 

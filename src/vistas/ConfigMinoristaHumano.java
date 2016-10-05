@@ -121,17 +121,15 @@ public class ConfigMinoristaHumano extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
    
-        try {
-            minorista.setPresupuesto(Integer.parseInt(jLPresupuesto.getText()));
-            minorista.getInventario().setInventario(Integer.parseInt(jTInventario.getText()));
+        minorista.setPresupuesto(Integer.parseInt(jLPresupuesto.getText()));
+        minorista.getInventario().setInventario(Integer.parseInt(jTInventario.getText()));
+        try{
             new VistaMinoristaHumano(minorista).setVisible(true);
-            this.setEnabled(false);
-            this.setVisible(false);
-            
-            // TODO add your handling code here:
-        } catch (RemoteException ex) {
-            Logger.getLogger(ConfigMinoristaHumano.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (Exception ex) {
+            System.out.println(ex.toString());
         }
+        this.setEnabled(false);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTInventarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTInventarioKeyReleased

@@ -16,6 +16,8 @@ import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import politicainventario.Cliente;
+import politicainventario.Faltante;
 import politicainventario.Pedido;
 
 /**
@@ -25,11 +27,14 @@ import politicainventario.Pedido;
 public class VistaMinoristaHumano extends javax.swing.JFrame {
 
     private IMayorista servidor = null;
-
     private MinoristaHumano minorista;
+    private Cliente cliente = new Cliente();
 
+    ;
+     
     public VistaMinoristaHumano() {
         initComponents();
+        minorista = new MinoristaHumano();
     }
 
     public VistaMinoristaHumano(VistaMinoristaHumano vista) {
@@ -65,35 +70,59 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
     private void initComponents() {
 
         jLDia = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        txtpedido = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLInvI = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLPresupuesto = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        txtpedido = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLDia.setText("Dia de servicio");
-        jLDia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jLDiaKeyReleased(evt);
+
+        jLInvI.setText("0");
+
+        jButton2.setText("Iniciar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel6.setText("Minorista Humano");
+
+        jLPresupuesto.setText("0");
+
+        jLabel1.setText("Presupuesto $");
+
+        jLabel2.setText("Inv. Actual:");
 
         jButton1.setText("Hacer pedido");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -130,20 +159,6 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLInvI.setText("0");
-
-        jButton2.setText("Iniciar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel6.setText("Minorista Humano");
-
-        jLPresupuesto.setText("0");
-
         jLabel7.setText("Ordenes");
 
         jLabel8.setText("Cantidad");
@@ -151,6 +166,9 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
         jLabel9.setText("Precio");
 
         jLabel10.setText("Dia de espera");
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        jLabel3.setText("ultima orden Realizada");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,20 +182,26 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel10))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(51, 51, 51))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel11.setText("Pedidos");
@@ -188,112 +212,203 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
 
         jLabel14.setText("Dia de espera");
 
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        jLabel5.setText("ultimo pedido atendido");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel11)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel14))
-                .addContainerGap(95, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel14)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel5)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jLabel1.setText("Presupuesto $");
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
 
-        jLabel2.setText("Inv. Actual:");
+        jTabbedPane1.addTab("General", jPanel4);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        jLabel15.setText("Ordenes Realizadas");
+
+        jLabel16.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        jLabel16.setText("Pedidos Atendidos");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel15)
+                        .addGap(291, 291, 291))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addGap(289, 289, 289))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Informacion Financiera", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLDia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLDia)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(31, 31, 31))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(43, 43, 43)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLInvI)
-                            .addComponent(jLPresupuesto))
-                        .addGap(32, 32, 32))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 568, Short.MAX_VALUE)
+                                .addComponent(jButton2)
+                                .addContainerGap(24, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(169, 169, 169)
+                                .addComponent(jLabel6)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(536, 536, 536)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLInvI)
+                                    .addComponent(jLPresupuesto))
+                                .addContainerGap(32, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(18, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLInvI)
                     .addComponent(jLDia)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLInvI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLPresupuesto)
-                    .addComponent(jLabel1))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(19, 19, 19))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabel1)
+                    .addComponent(jLPresupuesto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        accionesDelCliente();
+        cargarDatos();
         Thread hilo = new Thread() {
             @Override
             public void run() {
                 super.run();
+                int numero = -1;
                 while (true) {
                     try {
                         if (minorista.getDia() < servidor.obtenerDia()) {
@@ -304,36 +419,122 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
                             } catch (Exception ex) {
                             }
                             for (int i = 0; i < minorista.getInventario().getOrden().size(); i++) {
-                                if ((minorista.getInventario().getOrden().get(i).getEstado() == true) && (minorista.getInventario().getOrden().get(i).getCosto() == 5)) {
+
+                                if ((minorista.getInventario().getOrden().get(i).getEstado())) {
                                     if (minorista.getInventario().getOrden().get(i).getDiadeespera() == 0) {
                                         minorista.getInventario().getOrden().get(i).setEstado(false);
                                         minorista.getInventario().setInventario(minorista.getInventario().getInventario() + minorista.getInventario().getOrden().get(i).getCuantordenar());
+                                        if (numero > -1) {
+                                            minorista.getInventario().getPedido().get(numero).setEstado(false);
+                                            minorista.getInventario().setInventario(minorista.getInventario().getInventario() - minorista.getInventario().getPedido().get(numero).getCuantordenar());
+                                        }
                                         jLInvI.setText("" + minorista.getInventario().getInventario());
                                         break;
                                     }
                                     if (minorista.getInventario().getOrden().get(i).getDiadeespera() > 0) {
                                         minorista.getInventario().getOrden().get(i).setDiadeespera(minorista.getInventario().getOrden().get(i).getDiadeespera() - 1);
+                                        if (numero > -1) {
+                                            minorista.getInventario().getPedido().get(i).setDiadeespera(minorista.getInventario().getPedido().get(numero).getDiadeespera() - 1);
+                                        }
                                         break;
                                     }
                                 }
                             }
+                            int cont=0;
+                            for (int i = 0; i < minorista.getInventario().getPedido().size(); i++) {
+                                if ((minorista.getInventario().getPedido().get(i).getEstado())) {
+                                    if (minorista.getInventario().getPedido().get(i).getDiadeespera() == 0) {
+                                        minorista.getInventario().getPedido().get(i).setEstado(false);
+                                        minorista.getInventario().setInventario(minorista.getInventario().getInventario() - minorista.getInventario().getPedido().get(i).getCuantordenar());
+                                        cont=1;
+                                        accionesDelCliente();
+                                        break;
+                                    } else {
+                                        if (minorista.getInventario().getPedido().get(i).getDiadeespera() > 0) {
+                                            minorista.getInventario().getPedido().get(i).setDiadeespera(minorista.getInventario().getPedido().get(i).getDiadeespera() - 1);
+                                        }
+                                        break;
+                                    }
+                                } 
+                            }
+                            if(cont==0)accionesDelCliente();
                         }
+                        cargarDatos();
                     } catch (RemoteException ex) {
                         Logger.getLogger(VistaMinoristaHumano.class.getName()).log(Level.SEVERE, null, ex);
                     }
+
                 }
 
             }
 
         };
         hilo.start();
-        activarElementos();        // TODO add your handling code here:
+        activarElementos();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+    private void cargarDatos() {
+        Pedido pedido1 = new Pedido();
+        Pedido pedido2 = new Pedido();
+        for (int i = 0; i < minorista.getInventario().getOrden().size(); i++) {
+            if (minorista.getInventario().getOrden().get(i).getEstado()) {
+                pedido1 = minorista.getInventario().getOrden().get(i);
+            }
+        }
+        for (int i = 0; i < minorista.getInventario().getPedido().size(); i++) {
+            if ((minorista.getInventario().getPedido().get(i).getEstado())) {
+                pedido2 = minorista.getInventario().getPedido().get(i);
+            }
+        }
+        jLabel8.setText("" + pedido1.getCuantordenar());
+        jLabel9.setText("" + (pedido1.getCuantordenar() * 5));
+        jLabel10.setText("" + pedido1.getDiadeespera());
+        jLabel12.setText("" + pedido2.getCuantordenar());
+        jLabel13.setText("" + (pedido2.getCuantordenar() * 7));
+        jLabel14.setText("" + pedido2.getDiadeespera());
+    }
 
+    private void accionesDelCliente() {
+        int demanda = cliente.generaDemanda();
+        jLabel11.setText("" + demanda);
+        if (demanda <= minorista.getInventario().getInventario()) {
+            minorista.getInventario().getPedido().add(new Pedido(0, demanda, 0, false));
+            minorista.setPresupuesto(minorista.getPresupuesto() + demanda * 7);
+            minorista.getInventario().setInventario(minorista.getInventario().getInventario() - demanda);
+            jLPresupuesto.setText("" + minorista.getPresupuesto());
+            jLInvI.setText("" + minorista.getInventario().getInventario());
+        } else {
+            for (int i = 0; i < minorista.getInventario().getOrden().size(); i++) {
+                if ((minorista.getInventario().getOrden().get(i).getEstado())) {
+                    if ((minorista.getInventario().getOrden().get(i).getCuantordenar() + minorista.getInventario().getInventario()) >= demanda) {
+                        if (cliente.confirmaEspera(minorista.getInventario().getOrden().get(i).getDiadeespera())) {
+                            minorista.getInventario().getPedido().add(new Pedido(0, demanda, minorista.getInventario().getOrden().get(i).getDiadeespera(), true));
+                            minorista.getInventario().getFaltante().add(new Faltante(1, (demanda - minorista.getInventario().getInventario())));
+                            minorista.setPresupuesto(minorista.getPresupuesto() + (demanda * 7) - (demanda - minorista.getInventario().getInventario()));
+                            break;
+                        } else {
+                            minorista.getInventario().getPedido().add(new Pedido(0, demanda, -1, false));
+                            minorista.getInventario().getFaltante().add(new Faltante(2, demanda));
+                            minorista.setPresupuesto(minorista.getPresupuesto() - (demanda * 2));
+                            break;
+                        }
+                    } else {
+                        minorista.getInventario().getPedido().add(new Pedido(0, demanda, -1, false));
+                        minorista.getInventario().getFaltante().add(new Faltante(2, demanda));
+                        minorista.setPresupuesto(minorista.getPresupuesto() - (demanda * 2));
+                        break;
+                    }
+                }
+            }
+            jLPresupuesto.setText("" + minorista.getPresupuesto());
+            jLInvI.setText("" + minorista.getInventario().getInventario());
+        }
+
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             int cantidad = Integer.parseInt(txtpedido.getText());
-            if ((cantidad * 5) > minorista.getPresupuesto()) {
+            if ((cantidad * 5) + ((50 + (cantidad * 0.2))) > minorista.getPresupuesto()) {
                 JOptionPane.showMessageDialog(null, "No posee el capital suficiente para la compra");
             } else {
                 int seleccion = JOptionPane.QUESTION_MESSAGE;
@@ -348,52 +549,24 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
                         servidor.aceptarOrden(minorista.getCod());
                     } catch (RemoteException ex) {
                         Logger.getLogger(VistaMinoristaHumano.class.getName()).log(Level.SEVERE, null, ex);
+                        System.out.println(ex.toString());
                     }
-                    minorista.getInventario().getOrden().add(new Pedido(5, cantidad, ord.getDiasEspera(), true));
-                    minorista.setPresupuesto(minorista.getPresupuesto() - (cantidad * 5));
+                    minorista.getInventario().getOrden().add(new Pedido(50 + (cantidad * 0.2), cantidad, ord.getDiasEspera(), true));
+                    minorista.setPresupuesto(minorista.getPresupuesto() - (cantidad * 5) - (50 + (cantidad * 0.2)));
                     jLPresupuesto.setText("" + minorista.getPresupuesto());
                 } else {
                     txtpedido.setText("");
                 }
             }
         } catch (Exception ex) {
+            System.out.println(ex.toString());
             JOptionPane.showMessageDialog(null, "No a ingresado un numero de unidades valido");
         }
         txtpedido.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jLDiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLDiaKeyReleased
-
-    }//GEN-LAST:event_jLDiaKeyReleased
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaMinoristaHumano.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaMinoristaHumano.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaMinoristaHumano.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaMinoristaHumano.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaMinoristaHumano().setVisible(true);
@@ -441,8 +614,12 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -450,6 +627,13 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField txtpedido;
     // End of variables declaration//GEN-END:variables
 }

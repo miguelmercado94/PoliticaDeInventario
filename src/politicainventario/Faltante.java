@@ -10,34 +10,20 @@ package politicainventario;
  * @author miguelangel
  */
 public class Faltante {
-    private static final int costonoespera = 50;
-    private static final int costoespera = 20;
-    private int diaespera;
-    private int unidad;
-    private boolean espera;
+    private  int costo ;
+   private int unidad;
+   
 
-    public Faltante(int diaespera, int unidad) {
-        this.diaespera = diaespera;
+   
+
+    public Faltante(int costo,  int unidad) {
+        this.costo = costo;
         this.unidad = unidad;
     }
- public Faltante(int diaespera, int unidad,boolean espera) {
-        this.diaespera = diaespera;
-        this.unidad = unidad;
-        this.espera=espera;
-    }
-    public Faltante() {
-        diaespera=0;
-        unidad=0;
-    }
+    
 
-    public int getDiaespera() {
-        return diaespera;
-    }
 
-    public void setDiaespera(int diaespera) {
-        this.diaespera = diaespera;
-    }
-
+   
     public int getUnidad() {
         return unidad;
     }
@@ -46,19 +32,13 @@ public class Faltante {
         this.unidad = unidad;
     }
 
-    public boolean getEspera() {
-        return espera;
+    public int getCosto() {
+        return costo;
     }
 
-    public void setEspera(boolean espera) {
-        this.espera = espera;
+    public void setCosto(int costo) {
+        this.costo = costo;
     }
-    public int costoFaltante(){
-        if(espera==true){
-        return unidad* costoespera;
-        }else{
-        return unidad*costonoespera;
-        }
-    }
+
     
 }
