@@ -30,7 +30,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     Minorista minorista;
     public VistaPrincipal() {
         initComponents();
-        jCMinorista.setSelectedItem("Simulado");
+        jCMinorista.setSelectedItem("Humano");
+        jCMinorista.setEnabled(false  );
     }
 
     /**

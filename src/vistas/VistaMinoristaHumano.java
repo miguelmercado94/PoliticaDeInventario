@@ -197,9 +197,7 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(39, 39, 39))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel22)
-                                    .addGap(18, 18, 18)))
+                                .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
@@ -217,9 +215,9 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel8))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -255,32 +253,30 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel14)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 13, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
                         .addGap(23, 23, 23))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel5))
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 46, Short.MAX_VALUE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(29, 29, 29))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jLabel19)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel14)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,7 +505,8 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
                             }
                             if (cont == 0) {
                                 accionesDelCliente();
-                            }
+                            } 
+                            
                         }
                         cargarDatos();
                     } catch (RemoteException ex) {
@@ -553,39 +550,40 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
             jLPresupuesto.setText("" + minorista.getPresupuesto());
             jLInvI.setText("" + minorista.getInventario().getInventario());
         } else {
-            
+            int aux = 0;
             for (int i = 0; i < minorista.getInventario().getOrden().size(); i++) {
                 if ((minorista.getInventario().getOrden().get(i).getEstado())) {
                     if ((minorista.getInventario().getOrden().get(i).getCuantordenar() + minorista.getInventario().getInventario()) >= demanda) {
                         if (cliente.confirmaEspera(minorista.getInventario().getOrden().get(i).getDiadeespera())) {
                             minorista.getInventario().getPedido().add(new Pedido(0, demanda, minorista.getInventario().getOrden().get(i).getDiadeespera(), true));
                             minorista.getInventario().getFaltante().add(new Faltante(1, (demanda - minorista.getInventario().getInventario())));
-                            minorista.setPresupuesto(minorista.getPresupuesto() + (demanda * 7) - (demanda - minorista.getInventario().getInventario()));
-                            break;
+                            minorista.setPresupuesto(minorista.getPresupuesto() + (demanda * 7));
+                            aux=1;
                         } else {
                             minorista.getInventario().getPedido().add(new Pedido(0, demanda, -1, false));
                             minorista.getInventario().getFaltante().add(new Faltante(2, demanda));
-                            minorista.setPresupuesto(minorista.getPresupuesto() - (demanda * 2));
-                            break;
+                            minorista.setPresupuesto(minorista.getPresupuesto()-(2*demanda));
+                            minorista.getInventario().setInventario(minorista.getInventario().getInventario()-demanda);
+                           aux=1;
                         }
-                    } else {
-                        if (demanda > minorista.getInventario().getInventario()) {
-                            minorista.getInventario().getPedido().add(new Pedido(0, demanda, -1, false));
-                            minorista.getInventario().getFaltante().add(new Faltante(2, demanda));
-                            minorista.setPresupuesto(minorista.getPresupuesto() - (demanda * 2));
-                        } else {
-                            minorista.getInventario().getPedido().add(new Pedido(0, demanda, -1, false));
-                            minorista.getInventario().getFaltante().add(new Faltante(2, demanda));
-                            minorista.setPresupuesto(minorista.getPresupuesto() - (demanda * 2));
-                        }
-                        break;
-                    }
+                    } 
+                     break;
                 }
             }
-            
+                 if (aux==0) {
+                            minorista.getInventario().getPedido().add(new Pedido(0, demanda, -1, false));
+                            minorista.getInventario().getFaltante().add(new Faltante(2, demanda)); 
+                            minorista.setPresupuesto(minorista.getPresupuesto()-(2*demanda));
+                            minorista.getInventario().setInventario(minorista.getInventario().getInventario()-demanda);
+                            if(minorista.getPresupuesto()<=0){
+                            JOptionPane.showMessageDialog(null, "Usted A quedado en quiebra");
+                            }
+                        } 
+                        
             jLPresupuesto.setText("" + minorista.getPresupuesto());
             jLInvI.setText("" + minorista.getInventario().getInventario());
         }
+        
         rellenarTablaPedido(minorista.getInventario().getPedido());
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
