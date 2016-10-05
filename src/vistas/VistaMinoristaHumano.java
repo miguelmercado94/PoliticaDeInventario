@@ -30,7 +30,8 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
     
     private IMayorista servidor = null;
     private MinoristaHumano minorista;
-    private Cliente cliente = new Cliente();    
+    private Cliente cliente = new Cliente(); 
+    Thread hilo;
     
     public VistaMinoristaHumano() {
         initComponents();
@@ -456,7 +457,7 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         cargarDatos();
-        Thread hilo = new Thread() {
+         hilo = new Thread() {
             @Override
             public void run() {
                 super.run();                
@@ -522,6 +523,7 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
         activarElementos();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+    
     private void cargarDatos() {
         Pedido pedido1 = new Pedido();
         Pedido pedido2 = new Pedido();
@@ -577,6 +579,7 @@ public class VistaMinoristaHumano extends javax.swing.JFrame {
                             minorista.getInventario().setInventario(minorista.getInventario().getInventario()-demanda);
                             if(minorista.getPresupuesto()<=0){
                             JOptionPane.showMessageDialog(null, "Usted A quedado en quiebra");
+                            hilo.stop();
                             }
                         } 
                         
